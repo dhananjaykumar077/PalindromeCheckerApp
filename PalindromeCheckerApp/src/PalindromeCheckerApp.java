@@ -1,62 +1,44 @@
-/**
- * MAIN CLASS: UseCase2PalindromeCheckerApp
- *
- * Use Case 2: Hardcoded Palindrome Validation
- *
- * Description:
- * This class demonstrates basic palindrome validation
- * using a hardcoded string value.
- *
- * At this stage, the application:
- * - Stores a predefined string
- * - Compares characters from both ends
- * - Determines whether the string is a palindrome
- * - Displays the result on the console
- *
- * This use case introduces fundamental comparison logic
- * before using advanced data structures.
- *
- * @author Developer
- * @version 2.0
- */
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
-    /**
-     * Application entry point for UC2.
-     * @param args Command-line arguments
-     */
     public static void main(String[] args) {
 
-        // Hardcoded string
-        String input = "madam";
+        Scanner scanner = new Scanner(System.in);
 
-        // Assume it is a palindrome initially
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        checkPalindromeUsingCharArray(input);
+
+        scanner.close();
+    }
+
+    // Use Case 4: Character Array Based Validation
+    public static void checkPalindromeUsingCharArray(String input) {
+
+        char[] characters = input.toCharArray();
+
+        int start = 0;
+        int end = characters.length - 1;
+
         boolean isPalindrome = true;
 
-        // Convert to lowercase (optional but good practice)
-        input = input.toLowerCase();
+        while (start < end) {
 
-        // Compare characters from both ends
-        int left = 0;
-        int right = input.length() - 1;
-
-        while (left < right) {
-            if (input.charAt(left) != input.charAt(right)) {
+            if (characters[start] != characters[end]) {
                 isPalindrome = false;
                 break;
             }
-            left++;
-            right--;
+
+            start++;
+            end--;
         }
 
-        // Display result
-        System.out.println("Input String: " + input);
-
         if (isPalindrome) {
-            System.out.println("Result: The string IS a palindrome.");
+            System.out.println("The string is a palindrome.");
         } else {
-            System.out.println("Result: The string is NOT a palindrome.");
+            System.out.println("The string is NOT a palindrome.");
         }
     }
 }
