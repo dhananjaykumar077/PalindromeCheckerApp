@@ -1,28 +1,29 @@
 import java.util.Scanner;
 
 /**
- * MAIN CLASS UseCase11PalindromeCheckerApp
+ * MAIN CLASS UseCase13PalindromeCheckerApp
  *
- * Use Case 11: Object-Oriented Palindrome Checker
+ * Use Case 13: Performance Benchmark Palindrome Checker
  *
  * Description:
- * This class demonstrates palindrome validation using
- * a separate service class.
+ * This class measures and displays the performance
+ * of the palindrome validation algorithm.
  *
- * This improves:
- * - Reusability
- * - Maintainability
- * - Clean design
+ * At this stage, the application:
+ * - Executes the palindrome check
+ * - Captures start and end time
+ * - Calculates total execution duration
+ * - Displays benchmarking results
  *
  * @author Developer
- * @version 11.0
+ * @version 13.0
  */
 
 public class PalindromeCheckerApp {
 
     /**
      * Application entry point
-     * @param args Command-Line arguments
+     * @param args Command-line arguments
      */
 
     public static void main(String[] args) {
@@ -32,9 +33,16 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        PalindromeService service = new PalindromeService();
+        // Capture start time
+        long startTime = System.nanoTime();
 
-        boolean result = service.checkPalindrome(input);
+        boolean result = checkPalindrome(input);
+
+        // Capture end time
+        long endTime = System.nanoTime();
+
+        // Calculate execution time
+        long executionTime = endTime - startTime;
 
         if (result) {
             System.out.println("The string is a palindrome.");
@@ -42,23 +50,16 @@ public class PalindromeCheckerApp {
             System.out.println("The string is NOT a palindrome.");
         }
 
+        System.out.println("Execution Time: " + executionTime + " nanoseconds");
+
         scanner.close();
     }
-}
-
-/**
- * Service class containing palindrome logic
- */
-
-class PalindromeService {
 
     /**
-     * Checks whether the input string is a palindrome
-     * @param input the string to check
-     * @return true if palindrome, otherwise false
+     * Palindrome checking method
      */
 
-    public boolean checkPalindrome(String input) {
+    public static boolean checkPalindrome(String input) {
 
         int start = 0;
         int end = input.length() - 1;
