@@ -1,33 +1,32 @@
 import java.util.Scanner;
-import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * MAIN CLASS UseCase7PalindromeCheckerApp
+ * MAIN CLASS UseCase8PalindromeCheckerApp
  *
- * Use Case 7: Deque Based Optimized Palindrome Checker
+ * Use Case 8: Linked List Based Palindrome Checker
  *
  * Description:
- * This class validates a palindrome using a Deque
- * (Double Ended Queue).
+ * This class checks whether a string is a palindrome
+ * using a LinkedList.
  *
- * Characters are inserted into the deque and then
- * compared by removing elements from both ends:
+ * Characters are added to the list and then compared
+ * by removing elements from both ends:
  * removeFirst()
  * removeLast()
  *
- * This avoids reversing the string and provides
- * efficient front-to-back comparison.
+ * This demonstrates how LinkedList supports
+ * double-ended operations for symmetric validation.
  *
  * @author Developer
- * @version 7.0
+ * @version 8.0
  */
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC7.
-     * @param args Command-Line arguments
+     * Application entry point for UC8.
+     * @param args Command-line arguments
      */
 
     public static void main(String[] args) {
@@ -37,20 +36,20 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        Deque<Character> deque = new LinkedList<>();
+        LinkedList<Character> list = new LinkedList<>();
 
-        // Insert characters into deque
+        // Add characters to LinkedList
         for (char ch : input.toCharArray()) {
-            deque.add(ch);
+            list.add(ch);
         }
 
         boolean isPalindrome = true;
 
         // Compare characters from both ends
-        while (deque.size() > 1) {
+        while (list.size() > 1) {
 
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
+            char first = list.removeFirst();
+            char last = list.removeLast();
 
             if (first != last) {
                 isPalindrome = false;
