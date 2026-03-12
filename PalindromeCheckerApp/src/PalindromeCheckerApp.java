@@ -1,35 +1,33 @@
 import java.util.Scanner;
-import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
- * MAIN CLASS UseCase6PalindromeCheckerApp
+ * MAIN CLASS UseCase7PalindromeCheckerApp
  *
- * Use Case 6: Queue Stack Fairness Check
+ * Use Case 7: Deque Based Optimized Palindrome Checker
  *
  * Description:
- * This class demonstrates palindrome validation using
- * two different data structures:
- * Queue (FIFO - First In First Out)
- * Stack (LIFO - Last In First Out)
+ * This class validates a palindrome using a Deque
+ * (Double Ended Queue).
  *
- * Characters are inserted into both structures and then
- * compared by removing from the front of the queue and
- * the top of the stack.
+ * Characters are inserted into the deque and then
+ * compared by removing elements from both ends:
+ * removeFirst()
+ * removeLast()
  *
- * If all characters match, the input string is confirmed
- * as a palindrome.
+ * This avoids reversing the string and provides
+ * efficient front-to-back comparison.
  *
  * @author Developer
- * @version 6.0
+ * @version 7.0
  */
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC6.
-     * @param args Command-line arguments
+     * Application entry point for UC7.
+     * @param args Command-Line arguments
      */
 
     public static void main(String[] args) {
@@ -39,24 +37,22 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new LinkedList<>();
 
-        // Insert characters into queue and stack
+        // Insert characters into deque
         for (char ch : input.toCharArray()) {
-            queue.add(ch);
-            stack.push(ch);
+            deque.add(ch);
         }
 
         boolean isPalindrome = true;
 
-        // Compare queue and stack values
-        while (!queue.isEmpty()) {
+        // Compare characters from both ends
+        while (deque.size() > 1) {
 
-            char qChar = queue.remove();
-            char sChar = stack.pop();
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
 
-            if (qChar != sChar) {
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
