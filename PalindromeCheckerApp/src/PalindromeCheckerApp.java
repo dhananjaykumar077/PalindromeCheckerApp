@@ -26,8 +26,8 @@ import java.util.Scanner;
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point
-     * @param args Command-line arguments
+     * Application entry point for UC10
+     * @param args Command-Line arguments
      */
 
     public static void main(String[] args) {
@@ -37,13 +37,13 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        // Normalize string: remove non-alphanumeric characters and convert to lowercase
+        // Normalize the string
         String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-
-        boolean isPalindrome = true;
 
         int start = 0;
         int end = normalized.length() - 1;
+
+        boolean isPalindrome = true;
 
         while (start < end) {
 
